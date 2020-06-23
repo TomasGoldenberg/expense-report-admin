@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col">
-        <a  class="btn btn-outline-primary"href="{{ route('expense_reports.create') }}">Create a new report</a>
+        <a  class="btn btn-outline-primary mb-5 mt-2"href="{{ route('expense_reports.create') }}">Create a new report</a>
         </div>
     </div>
 
