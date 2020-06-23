@@ -18,7 +18,7 @@
             <table class="table">
                 @foreach($expenseReports as $expenseReport)
                     <tr>
-                        <td>{{$expenseReport->title}}</td>
+                        <td><a href="{{route('expense_reports.show', $expenseReport)}}" >{{$expenseReport->title}}</a> </td>
                         <td><a href="{{route('expense_reports.edit', $expenseReport)}}" class="btn btn-warning ml-10">Edit Report</a> </td>
                         <td>
                             <form action="{{ route('expense_reports.destroy',$expenseReport) }}" method="POST">

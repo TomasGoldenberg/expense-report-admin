@@ -38,7 +38,9 @@ class ExpenseReportController extends Controller
 
     public function show($id) //show es get/id
     {
-        //
+        $report = ExpenseReport::findOrFail($id);
+        return view("expenseReport.show",compact('report'));
+        
     }
 
 
