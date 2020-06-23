@@ -19,7 +19,20 @@
                 @foreach($expenseReports as $expenseReport)
                     <tr>
                         <td>{{$expenseReport->title}}</td>
-                        <td><a href="{{route('expense_reports.edit', $expenseReport)}}" class="btn btn-sm btn-warning">Edit</a> </td>
+                        <td><a href="{{route('expense_reports.edit', $expenseReport)}}" class="btn btn-warning ml-10">Edit Report</a> </td>
+                        <td>
+                            <form action="{{ route('expense_reports.destroy',$expenseReport) }}" method="POST">
+                                @method("DELETE")
+                                @csrf
+                                <input
+                                 type="submit" 
+                                 value="Eliminar"
+                                 class="btn  btn-outline-danger mr-10"
+                                 onclick="return confirm('Deseas eliminar el Articulo?')"
+                                 >
+
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
     

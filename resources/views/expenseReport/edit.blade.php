@@ -3,7 +3,7 @@
 @section("content")
     <div class="row">
         <div class="col">
-             <h1>Edit Report {{$report->id}}</h1>
+             <h1>Edit Report N{{$report->id}}</h1>
         </div>
     </div>
 
