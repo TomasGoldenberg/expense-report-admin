@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Create Report</h1>
+            <h1>Export Report</h1>
         </div>
     </div>
 
@@ -26,17 +26,17 @@
                 </div>
             @endif
             <form 
-                action="{{ route('expense_reports.store') }}"
+                action="{{ route('expense_reports.sendingMail', ['expense_report' => $report->id]) }}"
                 method="POST"
                 enctype="multipart/form-data"
             >
                 @csrf
                 <div class="form-group">
-                    <label for="title">Title:</label>
-                        <input type="text" name="title" class="form-control" id="title" placeholder="Type a title" value="{{ old('title') }}  ">
+                    <label for="email">Email:</label>
+                        <input type="text" name="email" class="form-control" id="email" placeholder="Type a email" value="{{ old('email') }}  ">
                 </div>
 
-                <button type="submit" class="btn btn-outline-primary">Save</button>
+                <button type="submit" class="btn btn-outline-primary">Send mail</button>
 
             </form>
 

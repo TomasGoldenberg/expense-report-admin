@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\ExpenseReport;
 use Illuminate\Http\Request;
+use App\Mail\SummaryReport;
+use Illuminate\Support\Facades\Mail;
 
 class ExpenseReportController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware("auth");
+    }
     public function index()
     {
         return view("expenseReport.index",[
@@ -68,5 +73,20 @@ class ExpenseReportController extends Controller
 
         $report->delete();
         return back();
+    }
+
+    public function sendMail($id){
+       
+        $report = ExpenseReport::findOrFail($id);
+        return view("expenseReport.sendMail",compact('report'));
+    }
+
+
+    public function sendingMail(Request $request, $id){
+        $report = ExpenseReport::findOrFail($id);
+        Mail::to($request->get("email"))->send(new SummaryReport($report));
+
+        return redirect('/expense_reports');
+        
     }
 }
